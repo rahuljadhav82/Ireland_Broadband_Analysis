@@ -1,0 +1,46 @@
+---
+title: "R Plots"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## For PC Ownership
+   
+```{r}
+
+PC_labels <- c('Yes','No','Not_Specified')
+
+PC_values <- c(sum(counties$PC_Yes),sum(counties$PC_No),sum(counties$PC_NS))
+
+PC_pct <- round(PC_values/sum(PC_values)*100,2)
+
+PC_labels <- paste(PC_labels,PC_pct)
+
+PC_labels <- paste(PC_labels,"%",sep="")
+
+pie(PC_values, PC_labels, col= topo.colors(length(PC_labels)),main="PCs in Ireland Households")
+
+```
+
+
+## For Internet Connections
+
+```{r}
+
+Int_labels <- c('Broadband', 'Other', 'No Internet', 'Not Specified')
+
+Int_values <- c(sum(counties$Int_Broadband), sum(counties$Int_Other), sum(counties$Int_No), sum(counties$Int_NS))
+
+Int_pct <-  round(Int_values/sum(Int_values)*100,2)
+
+Int_labels <- paste(Int_labels, Int_pct)
+
+Int_labels <- paste(Int_labels,"%",sep="")
+
+
+pie(Int_values, Int_labels, col=topo.colors (length(Int_labels)),main="Internet in Ireland Households")
+
+```
